@@ -7,7 +7,7 @@ RUN npm install
 
 COPY strapi .
 
-RUN npm build
+RUN npm run build
 
 EXPOSE 1337
 CMD ["npm", "run", "develop"]
