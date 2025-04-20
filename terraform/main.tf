@@ -4,7 +4,15 @@ provider "aws" {
 
 resource "aws_ecr_repository" "strapi" {
   name = var.ecr_repo_name
+
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes = [
+      name
+    ]
+  }
 }
+
 
 resource "aws_instance" "strapi_ec2" {
   ami                    = "ami-084568db4383264d4" 
