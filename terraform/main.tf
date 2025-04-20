@@ -9,7 +9,7 @@ resource "aws_instance" "strapi_ec2" {
 
   user_data = templatefile("${path.module}/user_data.sh", {
     image_tag     = var.image_tag
-    repo_url      = aws_ecr_repository.strapi.repository_url
+    repo_url = var.repo_url
     region        = var.region
   })
 

@@ -11,9 +11,12 @@ variable "key_name" {
 }
 
 variable "image_tag" {
-  type = string
+  description = "Docker image tag to deploy"
+  type        = string
 }
 
-variable "ecr_repo_name" {
-  default = "strapi-app"
+variable "repo_url" {
+  description = "ECR repository URL"
+  type        = string
 }
+

@@ -6,6 +6,9 @@ on:
       image_tag:
         description: 'Docker image tag to deploy'
         required: true
+      repo_url:
+        description: 'ECR repo URL (e.g. 123456789012.dkr.ecr.us-east-1.amazonaws.com/strapi-app)'
+        required: true
 
 jobs:
   deploy:
@@ -33,7 +36,7 @@ jobs:
 
       - name: Plan Terraform
         working-directory: terraform
-        run: terraform plan -var="image_tag=${{ github.event.inputs.image_tag }}" -out=tfplan
+        run: terraform plan -var="image_tag=${{ github.event.inputs.image_tag }}" -var="repo_url=${{ github.event.inputs.repo_url }}" -out=tfplan
 
       - name: Apply Terraform
         working-directory: terraform
