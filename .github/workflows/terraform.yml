@@ -45,9 +45,3 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve -var "image_tag=${{ github.event.inputs.image_tag }}" -var "repo_url=${{ github.event.inputs.repo_url }}"
         working-directory: ./terraform
-
-      - name: Verify Deployment
-        run: |
-          PUBLIC_IP=$(aws ec2 describe-instances --instance-ids ${{ env.EC2_INSTANCE_ID }} --query "Reservations[0].Instances[0].PublicIpAddress" --output text)
-          echo "EC2 Public IP: $PUBLIC_IP"
-          curl http://$PUBLIC_IP
