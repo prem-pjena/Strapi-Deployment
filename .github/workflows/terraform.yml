@@ -60,15 +60,3 @@ jobs:
       - name: Set EC2 Public IP as environment variable
         run: echo "EC2_PUBLIC_IP=$EC2_PUBLIC_IP" >> $GITHUB_ENV
 
-      - name: Deploy Application (Optional)
-        run: |
-          echo "Using EC2 public IP: $EC2_PUBLIC_IP"
-          # If you're deploying Strapi or another app, you can replace this step with your own deployment command:
-          # Example (replace with actual deployment process):
-          # curl http://$EC2_PUBLIC_IP:1337 # Example for Strapi (replace with your app's port)
-
-      - name: Validate Deployment (Optional)
-        run: |
-          echo "Validating that the application is up and running..."
-          # You can perform a curl request to check if the app is up
-          curl -s http://$EC2_PUBLIC_IP:1337 # Replace with the correct port for your app
